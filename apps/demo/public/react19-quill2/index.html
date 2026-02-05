@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React 19 + Quill 2</title>
+    <link rel="stylesheet" href="/assets/quill.snow.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- React 19 via ESM (React 19 dropped UMD builds) -->
+    <script type="module">
+      import React from 'https://esm.sh/react@19';
+      import ReactDOM from 'https://esm.sh/react-dom@19';
+      import { createRoot } from 'https://esm.sh/react-dom@19/client';
+      import * as jsxRuntime from 'https://esm.sh/react@19/jsx-runtime';
+
+      // Expose as globals for the IIFE bundle
+      window.React = React;
+      window.ReactDOM = ReactDOM;
+      window.ReactDOM.createRoot = createRoot;
+      window.jsxRuntime = jsxRuntime;
+
+      // Load react-quill bundle
+      const bundleScript = document.createElement('script');
+      bundleScript.src = '/assets/react-quill.js';
+      bundleScript.onload = () => {
+        // Load shared demo script
+        const demoScript = document.createElement('script');
+        demoScript.src = '/_shared/demo-reactquill.js';
+        demoScript.onload = () => {
+          mountReactQuill(document.getElementById('app'), { title: 'React 19 + Quill 2' });
+        };
+        document.body.appendChild(demoScript);
+      };
+      document.body.appendChild(bundleScript);
+    </script>
+  </body>
+</html>
+
+
