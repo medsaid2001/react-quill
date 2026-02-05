@@ -1,11 +1,12 @@
 {
-  "name": "react-quill-monorepo",
+  
+  "name": "react-quill-new",
   "private": true,
   "description": "Monorepo for react-quill-new: a Quill component for React.",
   "license": "MIT",
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "npm@10.0.0",
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=./packages/*",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "dev": "turbo run dev",
